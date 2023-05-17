@@ -1,0 +1,34 @@
+<view wx:if="{{!isLoad}}" class="margin-top load loading text-l text-grey"></view>
+
+<!-- 删除了微博联系我们  servicePic  formServicePic-->
+<view class="main-admin" wx:if="{{isAdmin&&isLoad}}" style="width: 750rpx; height: 1188rpx; display: flex; box-sizing: border-box">
+
+	<view class="form-box shadow">
+		<!-- 地址 -->
+		<view class="form-group">
+			<view class="title">地址：</view>
+		</view>
+		<view class="form-group">
+			<textarea placeholder="填写地址" placeholder-class="phc" model:value="{{formCity}}" maxlength="200" focus="{{formCityFocus}}" auto-height="{{true}}"></textarea>
+		</view>
+		<view wx:if="{{formCityFocus}}" class="hint-desc error">{{formCityFocus}}</view>
+
+		<!-- 电话 -->
+		<view class="form-group">
+			<view class="title">电话：</view>
+		</view>
+
+		<view class="form-group">
+			<textarea placeholder="填写电话" placeholder-class="phc" model:value="{{formPhone}}" maxlength="50" focus="{{formPhoneFocus}}" auto-height="{{true}}"></textarea>
+		</view>
+		<view wx:if="{{formPhoneFocus}}" class="hint-desc error">{{formPhoneFocus}}</view>
+
+
+		<cmpt-img-upload isShowSize="{{false}}" title="微信联系我们：" imgMax="8" imgList="{{formServicePic}}" isCheck="{{false}}" bind:upload="bindUploadCmpt" data-item="formServicePic" />
+
+		<!-- <cmpt-img-upload isShowSize="{{false}}" title="微博联系我们：" imgMax="8" imgList="{{formOfficePic}}" isCheck="{{false}}" bind:upload="bindUploadCmpt" data-item="formOfficePic" /> -->
+	</view>
+
+	<button bindtap="bindFormSubmit" class="btn-admin margin-top-xl">提交</button>
+
+</view>

@@ -1,0 +1,35 @@
+<view wx:if="{{!isLoad}}" class="margin-top load loading text-l text-grey"></view>
+
+<!-- 标题 -->
+<view class="main-admin" wx:if="{{isAdmin&&isLoad}}">
+	<view class="form-box shadow">
+		<view class="form-group">
+			<view class="action text-bold text-l">
+				关于我们
+			</view>
+			<view class="action">
+				{{formAbout.length}}/5000
+			</view>
+		</view>
+
+
+<!-- 内容 -->
+		<view class="form-group align-start">
+			<textarea name="content" placeholder-class="phc" placeholder="填写关于我们" style="min-height:500rpx" model:value="{{formAbout}}" maxlength="5000" focus="{{formAboutFocus}}" auto-height="true"></textarea>
+		</view>
+
+		<view wx:if="{{formAboutFocus}}" class="hint-desc error">{{formAboutFocus}}</view>
+	</view>
+
+	<!-- 图片部分 -->
+	<view class="form-box shadow">
+
+		<cmpt-img-upload isShowSize="{{true}}" title="介绍图片 (选填)" imgMax="8" imgList="{{formAboutPic}}" isCheck="{{false}}" bind:upload="bindUploadCmpt" data-item="formAboutPic"
+		 />
+
+	</view>
+
+
+	<!-- 提交按钮 -->
+	<button bindtap="bindFormSubmit" class="btn-admin margin-top-xl">提交</button>
+</view>
